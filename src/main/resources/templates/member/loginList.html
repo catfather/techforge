@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+    <link rel="stylesheet" th:href="@{/css/member/loginList.css}">
+    <!--font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="section1">
+        <div class="nav">
+            <h1 class="logo">
+                <a th:href="@{/}"><img th:src="@{/images/logo2.png}" alt="logo"></a>
+            </h1>
+            <div class="menu">
+                <ul>
+                    <li><a th:href="@{/member/companyLogin}">Company</a></li>
+                    <li><a th:href="@{/member/login}">Staff</a></li>
+                    <li><a th:href="@{/member/freelancerLogin}">Freelancer</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section2">
+
+        <div class="inner-con">
+            <div class="title">
+                <h1>실력있는 프리랜서를 빠르게 🏃‍♀️🏃‍♂️🏃</h1>
+                <h1>Sole Manager와 성공적인 비즈니스를 시작하세요!</h1>
+            </div>
+
+            <div class="login-list">
+                <div class="login">
+                    <ul>
+                        <li>
+                            <a th:href="@{/member/join}">직원 회원가입</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/member/companyJoin}">회사 회원가입</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/member/freeJoin}">프리랜서 회원가입</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="img">
+                    <img th:src="@{/images/index_item1.png}" alt="index_item1">
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+</body>
+</html>

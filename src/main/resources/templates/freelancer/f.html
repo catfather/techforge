@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>freelancer home</title>
+</head>
+<body>
+
+<a th:href="@{/freelancer/detail/{freeId}(freeId=${#authentication.principal.freelancerEntity.id})}">마이페이지</a>
+
+</body>
+</html>

@@ -1,0 +1,364 @@
+@import url(/css/common/reset.css);
+@import url(/css/common/header.css);
+@import url(/css/common/sidebar.css);
+
+body{
+    background-color: #fff;
+}
+
+.show {
+    display: block;
+}
+
+.hide{
+    display: none;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.detail{
+    flex-basis: 1200px;
+    height: auto;
+}
+
+.hr-text {
+    line-height: 1em;
+    position: relative;
+    outline: 0;
+    border: 0;
+    color: black;
+    text-align: start;
+    padding: 0px 30px;
+    height: 1.5em;
+    opacity: .5;
+}
+
+.hr-text:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 2px;
+    background: #ccc;
+}
+
+.hr-text:after {
+    content: attr(data-content);
+    position: relative;
+    display: inline-block;
+    color: black;
+    padding: 0 .5em;
+    line-height: 1.5em;
+    color: #157EFB;
+    background-color: #fcfcfa;
+}
+
+.detail .detail-con{
+    display: flex;
+    justify-content: center;
+}
+
+/* table.detail-table */
+table.detail-table{
+    width: 1000px;
+    font-family: 'Gothic A1', sans-serif;
+}
+
+table.detail-table td.td-title{
+    font-size: 30px;
+    font-weight: bold;
+    padding: 40px 10px;
+}
+
+table.detail-table td.td-writer{
+    font-size: 16px;
+    padding: 0 15px;
+    color: #666;
+}
+
+table.detail-table tr.tr-con{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+table.detail-table td.td-createTime{
+    width: 18%;
+    font-size: 16px;
+    padding: 0 15px;
+    color: #666;
+}
+
+table.detail-table td.td-hit{
+    width: 51%;
+    font-size: 16px;
+    padding: 0 10px;
+    color: #666;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+}
+
+table.detail-table td.td-hit span{
+    display: flex;
+}
+
+table.detail-table td.td-hit img{
+    width: 24px;
+    height: 24px;
+}
+
+table.detail-table td.td-duration{
+    font-size: 16px;
+    padding: 0 10px;
+    color: #666;
+    text-align: right;
+    gap: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: right;
+}
+
+table.detail-table td.td-duration span{
+    display: flex;
+}
+
+table.detail-table td.td-duration img{
+    width: 16px;
+    height: 16px;
+}
+
+table.detail-table td.td-file{
+    font-size: 16px;
+    padding: 10px;
+    color: #666;
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
+    align-items: center;
+    text-align: center;
+}
+
+table.detail-table td.td-file span{
+    display: flex;
+}
+
+table.detail-table td.td-file img{
+    width: 24px;
+    height: 24px;
+}
+
+table.detail-table td.td-file span{
+    display: flex;
+}
+
+table.detail-table td.td-file span a{
+    text-decoration: underline;
+}
+
+table.detail-table td.td-file span a:hover{
+    color: #157EFB;
+}
+
+table.detail-table td.td-content{
+    font-size: 20px;
+    padding: 30px 10px;
+}
+
+table.detail-table td.td-menu{
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+table.detail-table td.td-menu a{
+    background-color: #3483e1;
+    border-radius: 30px;
+    padding: 10px 30px 8px 30px;
+    box-sizing: border-box;
+    color: #fff;
+    font-weight: bold;
+}
+
+table.detail-table td.td-menu a:hover{
+    background-color: #3277a9;;
+
+}
+
+
+.detail .reply-con{
+    padding: 100px 0;
+    box-sizing: border-box;
+}
+
+.detail .reply-con .reply-write{
+    display: flex;
+    justify-content: center;
+    font-family: 'Gothic A1', sans-serif;
+    border: 1px solid #f4f4f4;
+    padding: 60px 160px 20px 100px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: #f8f8f8;
+}
+
+
+/* table.replyWrite-table */
+.detail .reply-con .reply-write table.reply-table{
+    font-family: 'Gothic A1', sans-serif;
+}
+
+.detail .reply-con .reply-write table.reply-table tbody tr.tr1{
+
+}
+
+.detail .reply-con .reply-write table.reply-table tbody tr.tr2 td{
+    text-align: end;
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+
+.detail .reply-con .reply-write table.reply-table tbody tr.tr2 td input{
+    background-color: #89bfff;
+    border-radius: 30px;
+    padding: 10px 30px 8px 30px;
+    box-sizing: border-box;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.detail .reply-con .reply-write table.reply-table tbody tr.tr2 td input:hover{
+    background-color: #3483e1;
+}
+
+.detail .reply-con .reply-write table.reply-table tbody td span img{
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.detail .reply-con .reply-write table.reply-table tbody tr.tr1 td span img{
+    width: 80px;
+    height: 80px;
+}
+
+
+/* reply-list */
+.detail .reply-con .reply-list{
+    padding: 100px;
+    box-sizing: border-box;
+    
+}
+
+/* list-table */
+.detail .reply-con .reply-list table.list-table{
+    font-family: 'Gothic A1', sans-serif;
+    width: 100%;
+}
+
+.detail .reply-con .reply-list table.list-table input{
+    border: none;
+    background-color: #fff;
+}
+
+.detail .reply-con .reply-list table.list-table .replyName{
+    padding: 20px 0 0 0;
+    box-sizing: border-box;
+    font-size: 18px;
+    width: 6%;
+    font-weight: bold;
+}
+
+.detail .reply-con .reply-list table.list-table .replyAppro{
+    font-size: 18px;
+    color: #ccc;
+}
+
+.detail .reply-con .reply-list table.list-table .replyTime{
+    color: #ccc;
+}
+
+
+.detail .reply-con .reply-list table.list-table .updateContent{
+    font-size: 18px;
+    padding: 20px 0 30px 0;
+    box-sizing: border-box;
+}
+
+.detail .reply-con .reply-list table.list-table .list{
+    font-size: 18px;
+    padding: 20px 0;
+    box-sizing: border-box;
+    text-align: right;
+}
+
+.detail .reply-con .reply-list table.list-table .list span{
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.detail .reply-con .reply-list table.list-table .update{
+    font-size: 18px;
+    padding: 0 0 30px 0;
+    box-sizing: border-box;
+    text-align: right;
+}
+
+.detail .reply-con .reply-list table.list-table .update span{
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.detail .reply-con .reply-list table.list-table .reply-button{
+    background-color: #89bfff;
+    border-radius: 30px;
+    padding: 10px 30px 8px 30px;
+    box-sizing: border-box;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+.detail .reply-con .reply-list table.list-table .list .replyDeleteBtn{
+    background-color: #89bfff;
+    border-radius: 30px;
+    padding: 10px 30px 8px 30px;
+    box-sizing: border-box;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.detail .reply-con .reply-list table.list-table .update .replyUpdateBtn{
+    background-color: #89bfff;
+    border-radius: 30px;
+    padding: 10px 30px 8px 30px;
+    box-sizing: border-box;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.detail .reply-con .reply-list table.list-table hr.divide{
+    border: 1px solid #f8f8f8;
+    
+}
+

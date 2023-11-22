@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>직원회원가입</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script th:src="@{/js/member/memberJoinCheck.js}"></script>
+    <script th:src="@{/js/member/address.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/member/join.css}">
+    <link rel="stylesheet" th:href="@{/css/member/joinCheck.css}">
+</head>
+<body>
+<div class="company">
+    <h1 class="h11">직원 회원가입</h1>
+    <form th:action="@{/member/adminJoin}" id="adminJoinForm" method="post" class="pretty-form">
+        <div class="form-group" id="form1">
+            <div class="form1-1">
+                <input type="text" id="mail" name="email" class="form-control" placeholder="이메일">
+                <button type="button" id="emailCheck" class="btn btn-primary">인증번호 받기</button>
+            </div>
+            <div class="feedback">
+                <span class="member_ok">사용 가능한 이메일입니다.</span>
+                <span class="member_already">이미 사용중인 이메일 입니다.</span>
+                <span class="email_expression">올바른 이메일을 작성해주세요.</span>
+            </div>
+            <div class="form1-2">
+                <input type="text" id="certificationNumber" class="form-control" placeholder="인증번호 입력">
+                <button type="button" id="certificationBtn" class="btn btn-primary">
+                    이메일인증확인
+                </button>
+            </div>
+            <!--            <label for="password">비밀번호:</label>-->
+            <input type="password" id="password" name="password" class="form-control" placeholder="비밀번호">
+            <!--<i class="fa-eye" onclick="fa_eye()">보기</i>-->
+            <div class="feedback">
+                <span class="pw_string">숫자와 영문자, 특수문자 조합으로 8~16자리를 사용해야 합니다.</span>
+                <span class="pw_length">숫자와 영문자, 특수문자를 혼용하여야 합니다.</span>
+                <span class="pw_true">같은 문자를 3번 이상 사용하실 수 없습니다.</span>
+                <span class="pw_email">비밀번호에 이메일이 포함되었습니다.</span>
+            </div>
+
+            <!--            <label for="checkPw">비밀번호확인:</label>-->
+            <div class="form-group">
+                <input type="password" id="checkPw" name="checkPw" class="form-control" placeholder="비밀번호 확인">
+                <div class="feedback">
+                    <span class="password_already">비밀번호가 일치하지 않습니다.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" id="form2">
+            <!--            <label for="phone">전화번호:</label>-->
+            <input type="text" id="phone" name="phone" class="form-control" placeholder="전화번호">
+            <div class="feedback">
+                <span class="phone_expression">올바른 전화번호을 작성해주세요.</span>
+                <span class="phone_ok">사용 가능한 전화번호입니다.</span>
+                <span class="phone_already">이미 가입된 전화번호입니다.</span>
+            </div>
+
+            <input type="text" id="name" name="name" class="form-control" placeholder="이름">
+
+
+            <!--            <label for="birth">출생년도를 선택하세요:</label>-->
+            <input type="date" id="birth" name="birth" class="form-control" placeholder="출생년도를 선택하세요" min="1900-01-01"
+                   value="2000-01-01">
+
+            <div class="genderList">
+                <span>성별</span>
+                <input type="radio" id="male" name="gender" class="male" value="M" checked="checked">
+                <label for="male">남성</label>
+                <input type="radio" id="female" name="gender" class="female" value="F">
+                <label for="female">여성</label>
+            </div>
+        </div>
+
+        <div class="form-group" id="form3">
+            <div class="form1-3">
+                <input type="text" id="postcode" name="postcode" class="form-control" placeholder="우편번호">
+                <button type="button" id="uphyeon" onclick="sample6_execDaumPostcode()" class="btn btn-secondary">우편번호
+                    찾기
+                </button>
+            </div>
+            <input type="text" id="address" name="address" class="form-control" placeholder="주소">
+            <span class="address_already">주소를 입력해주세요.</span>
+            <input type="text" id="detailAddress" name="detailAddress" class="form-control" placeholder="상세주소">
+            <span class="detail_already">상세주소를 입력해주세요.</span>
+            <input type="text" id="extraAddress" name="extraAddress" class="form-control" placeholder="참고항목">
+
+            <input type="hidden" name="is_display" value="1">
+            <input type="submit" id="submit-button" class="btn btn-success" value="회원가입">
+        </div>
+
+    </form>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+.sidebar{
+    width: 200px;
+    bottom: 0;
+    top: 70px;
+    left: 0;
+    position: fixed;
+    background-color: #000000;
+}
+.side{
+    color: white;
+}
+.side .admin{
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    font-size: 22px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #152161;
+    border-radius: 10px;
+}
+.side .freelancer{
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    font-size: 22px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #152161;
+    border-radius: 10px;
+}
+.side .company{
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    font-size: 22px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #152161;
+    border-radius: 10px;
+}
+.side .admin ul>li a{
+    color: white;
+}
+.side .freelancer ul>li a{
+    color: white;
+}
+/* sidebar 움직인다 */
+.big{
+    width: 200px;
+    overflow: hidden;
+    margin: 50px auto;
+}
+
+.big >li{
+    width: 100%;
+    text-align: center;
+    line-height: 40px;
+    padding-top: 20px;
+    font-size: 22px;
+    transition: all 0.5s;
+}
+
+.big >li a{
+    color: white;
+}
+.small{
+    height: 0;
+    overflow: hidden;
+    font-size: 18px;
+}
+.small > li{
+    line-height: 50px;
+    background-color: #152161;
+}
+.small > li a{
+    color: white;
+    /* 이거 색깔 바꾸기 */
+}
+.small > li a:hover{
+    transition: all 0.5s;
+    color: #9e9e9e;
+    font-size: 20px;
+}
+
+.big >li:hover .small{
+    height: 200px;
+    transition-duration: 1s;
+}

@@ -1,0 +1,84 @@
+@import url(/css/common/reset.css);
+
+
+/* modal */
+.chatbot-con{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000; /* 모달이 다른 요소 위에 보이도록 함 */
+}
+
+.chatbot-con .btn-wrap button{
+    background-color: #474861;
+    font-weight: bold;
+    color: #fff;
+}
+
+.chatbot-con h3{
+    display: flex;
+    justify-content: space-between;
+    background-color: #474861;
+    padding: 10px;
+    box-sizing: border-box;
+    color: #fff;
+}
+
+.chatbot-con button img{
+    width: 50px;
+    height: 50px;
+}
+
+.chatbot-con .chat-header{
+
+}
+
+.chatbot-con .chat-content{
+    background-color: #f8f8f8;
+}
+
+.chatbot-con .chat-question{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.chatbot-con .chat-question span{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.chatbot-con .chat-question span i img{
+    width: 24px;
+    height: 24px;
+}
+
+.chatbot-con .chat-question input{
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 500px;
+}
+
+.chatbot-con .chat-question button{
+    background-color: #6F80F1;
+    border: none;
+    padding: 10px 30px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.chatbot-con .chat-question button:hover{
+    background-color: #818bcb;
+}

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>계정 비활성화</title>
+    <link rel="stylesheet" th:href="@{/css/member/disabled.css}">
+</head>
+<body>
+<form th:href="@{/member/disabled/{memberId}(memberId=${memberDto.id})}" method="post">
+    <span>사용중인</span><span th:text="${memberDto.email}"></span><span>인 아이디를 비활성화하시겠습니까?</span>
+    <input type="submit" value="계정 비활성화">
+</form>
+</body>
+</html>

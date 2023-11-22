@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>NAVER API 예제</title>
+    <link rel="stylesheet" th:href="@{/css/naver.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+
+<body>
+<div class="naver">
+    <div class="left">
+        <ul>
+            <li>
+                <a href="워크플레이스 URL" class="naverBtn">네이버API연동</a>
+            </li>
+            <li>
+                <!-- https://developers.worksmobile.com/kr/docs/auth-oauth -->
+                <!-- 클라이언트 앱에서 사용자 인증을 통해 Authorization Code를 발급받으려면 아래와 같은 URL을 호출 -->
+                <form action="https://auth.worksmobile.com/oauth2/v2.0/authorize" method="get">
+                    <input type="hidden" name="client_id" value="Fbdqhslq5uCCrvl6yQKk">
+                    <input type="hidden" name="redirect_uri" value="http://localhost:8023/naver/token">
+                    <input type="hidden" name="scope"
+                           value="directory,directory.read,orgunit,orgunit.read,user,user.read">
+                    <input type="hidden" name="response_type" value="code">
+                    <input type="hidden" name="state" value="test">
+                    <input type="submit" value="조직인증" class="naverBtn">
+                </form>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+
+
+<script>
+  var naverLoginButton = document.querySelector('.naverLogin');
+  naverLoginButton.addEventListener('click', function (memberId) {
+
+    $.ajax({
+          url: "/api/naver/code", 
+          method:"GET",
+          async: false, //기다림
+        }).done(function (data){
+          console.log(data.return);
+          var newWindow = window.open('', '네이버 연동', 'width=800,height=600');
+
+          var htmlContent = data.return;
+
+          newWindow.document.body.innerHTML = htmlContent;
+        })
+        .fail(function( xhr, status, errorThrown) {
+          console.log("에러");
+        })
+
+  });
+
+
+
+</script>
+
+</html>

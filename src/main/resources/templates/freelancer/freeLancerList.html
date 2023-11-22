@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout/baseLayout}">
+<head>
+    <meta charset="UTF-8">
+    <title>프리랜서 목록</title>
+    <link rel="stylesheet" th:href="@{/css/company/companyList.css}">
+</head>
+<th:block layout:fragment="container">
+    <body>
+    <div class="container">
+        <div class="container-con">
+            <div class="memberList">
+                <div class="memberList-con">
+                    <div class="memberList-header">
+                        <h1>프리랜서 목록</h1>
+                    </div>
+                    <div class="search">
+                        <div class="form">
+                            <form th:action="@{/member/freeList}" method="get" class="search">
+                                <select name="subject" id="subject">
+                                    <option th:value="name">이름</option>
+                                    <option th:value="email">이메일</option>
+                                </select>
+                                <input type="text" name="search" id="search" th:value="${param.search}">
+                                <button type="submit">
+                                    <img th:src="@{/images/worktime/zoom.png}" alt="검색" class="zoom">
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>순번</th>
+                            <th>이름</th>
+                            <th>이메일</th>
+                            <th>전화번호</th>
+                            <th>보기</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="free, iterStat:${freeList}">
+                            <td th:text="${iterStat.count}"></td>
+                            <td th:text="${free.name}"></td>
+                            <td th:text="${free.email}"></td>
+                            <td th:text="${free.phone}"></td>
+                            <td><a th:href="@{/member/freeDetail/{memberId}(memberId=${free.id})}">상세보기</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="page">
+                        <ul>
+                            <li>
+                                <span th:if="${1==freeList.pageable.pageNumber+1}" class="span0">START</span>
+                                <span th:unless="${1==freeList.pageable.pageNumber+1}">
+                                    <a th:href="@{/member/freeList(page=0,search=${param.search} ,subject=${param.subject})}"
+                                       class="span1">처음</a>
+                                </span>
+                            </li>
+                            <li>
+                                <span th:if="${1==freeList.pageable.pageNumber+1}" class="span0">Pre</span>
+                                <span th:unless="${1==freeList.pageable.pageNumber+1}">
+                                    <a th:href="@{/member/freeList(page=${freeList.pageable.pageNumber-1},search=${param.search} ,subject=${param.subject})}"
+                                       class="span1">이전</a>
+                                </span>
+                            </li>
+                            <li th:each="i : ${#numbers.sequence(startPage, endPage)}" class="block">
+                                <span th:if="${i == freeList.pageable.pageNumber+1}" th:text="${i}" class="now"></span>
+                                <a th:unless="${i == freeList.pageable.pageNumber+1}"
+                                   th:href="@{/member/freeList(page=${i - 1},search=${param.search} ,subject=${param.subject})}"
+                                   th:text="${i}"></a>
+                            </li>
+                            <li>
+                                <span th:if="${freeList.totalPages == freeList.pageable.pageNumber + 1}" class="span0">NEXT</span>
+                                <span th:unless="${freeList.totalPages == freeList.pageable.pageNumber + 1}">
+                                    <a th:href="@{/member/freeList(page=${freeList.pageable.pageNumber + 1},search=${param.search} ,subject=${param.subject} )}"
+                                       class="span1">다음</a>
+                                </span>
+                            </li>
+                            <li>
+                                <span th:if="${freeList.totalPages == freeList.pageable.pageNumber + 1}" class="span0">END</span>
+                                <span th:unless="${freeList.totalPages == freeList.pageable.pageNumber+1}">
+                                    <a th:href="@{/member/freeList(page=${freeList.totalPages}-1,search=${param.search} ,subject=${param.subject})}"
+                                       class="span1">마지막</a>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+</th:block>
+</html>
+
+
+

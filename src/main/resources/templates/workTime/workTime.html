@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout/baseLayout}">
+<head>
+    <meta charset="UTF-8">
+    <title>개인일정</title>
+    <link rel="stylesheet" th:href="@{/css/workTime/workTime.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js'></script>
+    <script th:src="@{/js/workTime/workTime.js}" defer="defer"></script>
+</head>
+<th:block layout:fragment="container">
+<body>
+<main>
+<!--main-->
+<input id="memberId" type="hidden" th:value="${#authentication.principal.memberEntity.id}">
+<div class="container">
+    <!--내용 채우기-->
+    <div class="workCalendar">
+      <div id="content">
+          <h1 class="title">
+              근무기록
+          </h1>
+        <div id='calendar-container'>
+            <div id='calendar'>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<!--modal-->
+    <div class="modal">
+      <div class="modal-content">
+          <div class="btn">
+              <span class="red">
+                  <a href="#none" class="btn-close">✕</a>
+              </span>
+              <span class="yellow">
+                  <a href="">⎻</a>
+              </span>
+              <span class="green">
+                  <a href="">◦</a>
+              </span>
+          </div>
+        <div class="modal-header">
+          <h2 class="modal-title">근무 변경</h2>
+        </div>
+
+        <div class="modal-main">
+            <div class="day">
+                <div class="start">
+                    <label for="calendar_start_date" class="col-form-label">근무 시작 날짜</label>
+                    <input type="datetime-local" class="form-control" id="calendar_start_date" name="start">
+                </div>
+                <div class="end">
+                    <label for="calendar_end_date" class="col-form-label">근무 종료 날짜</label>
+                    <input type="datetime-local" class="form-control" id="calendar_end_date" name="end">
+                </div>
+            </div>
+            <select id="calendar_work_type">
+                <option value="NORMAL">근무</option>
+                <option value="EARLY">조퇴</option>
+                <option value="ABSENT">결석</option>
+                <option value="TARDY">지각</option>
+                <option value="noVACATION">휴가</option>
+            </select>
+        </div>
+
+        <div class="modal-footer">
+            <div class="add">
+                <a href="#none" class="btn-add">변경</a>
+            </div>
+            <div class="close">
+                <a href="#none" class="btn-close">닫기</a>
+            </div>
+        </div>
+
+        
+      </div>
+    </div>
+
+</main>
+</body>
+</th:block>
+</html>

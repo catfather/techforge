@@ -1,0 +1,75 @@
+@import "/css/common/reset.css";
+
+. body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vh;
+    margin: 0;
+}
+.container {
+    background-color: white;
+    padding: 10px 35px 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    max-width: 100%;
+    margin: 0 0 0 450px;
+}
+.update-header h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.update-header2 {
+    color: red;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+li {
+    margin-bottom: 15px;
+}
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+input[type="radio"] {
+    margin-right: 10px;
+}
+.go-update {
+    text-align: center;
+}
+input[type="submit"] {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.gender-label {
+    display: flex;
+}
+.gender-label .male {
+    margin: 0 15px 0 -7px;
+}
+.gender-label .female {
+    margin: 0 0 0 -7px;
+}

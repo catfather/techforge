@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:c="http://www.w3.org/1999/XSL/Transform">
+<link rel="stylesheet" th:href="@{/css/freelancer/freelancerLogin.css}">
+<script>
+    function redirectToJoinPage() {
+        // 페이지 이동
+        window.location.href = '/member/freeJoin';
+    }
+    function pwSearch(){
+        // 페이지 이동
+        window.location.href = '/member/findPw'
+    }
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+</head>
+<body>
+<div class="container">
+    <div class="container-con">
+        <div class="login">
+            <div class="login-con">
+                <div class="login-form">
+                    <h1>프리랜서 로그인</h1>
+
+                    <form th:action="@{/login/login}" method="post">
+<!--                        <input type="hidden" value="secret" name="secret_key">-->
+                        <ul>
+                            <li>
+                                <input type="email" name="email" id="email" placeholder="아이디를 입력해주세요"
+                                       onfocus="this.placeholder = ''" onblur="this.placeholder= '아이디를 입력해주세요.'">
+                            </li>
+
+                            <li>
+                                <input type="password" id="password" placeholder="비밀번호를 입력해주세요."
+                                       name="password"
+                                       onfocus="this.placeholder = ''" onblur="this.placeholder= '비밀번호를 입력해주세요.'">
+                            </li>
+
+                            <div th:if="${param.error}">
+                                <p id="valid" th:text="${exception}" class="alert alert-danger"
+                                   style="color:#ff0000;font-size:8px"></p>
+                            </div>
+
+                            <li>
+                                <button type="submit">로그인</button>
+                            </li>
+                            <li>
+                                <button type="button" onclick="redirectToJoinPage()">회원가입</button>
+                            </li>
+                            <li>
+                                <button type="button" onclick="pwSearch()">비밀번호 찾기</button>
+                            </li>
+                            <li class="oauth-login">
+                                <a th:href="@{/oauth2/authorization/google}"><img th:src="@{/images/oauth2/google.png}" alt="google"></a>
+                                <a th:href="@{/oauth2/authorization/kakao}"><img th:src="@{/images/oauth2/kakao.jpg}" alt="kakao"></a>
+                                <a th:href="@{/oauth2/authorization/naver}"><img th:src="@{/images/oauth2/naver.jpg}" alt="naver"></a>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

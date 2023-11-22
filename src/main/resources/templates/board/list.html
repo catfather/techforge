@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout/baseLayout}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>write</title>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js'></script>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script th:src="@{/js/board/list.js}" defer></script>
+    <script th:src="@{/js/board/calendar.js}" defer></script>
+    <link rel="stylesheet" th:href="@{/css/board/list.css}">
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&display=swap" rel="stylesheet">
+</head>
+<body>
+<th:block layout:fragment="container">
+<div class="container">
+<!--    <div class="filter">-->
+<!--        <label>게시판 유형:</label>-->
+<!--        <input type="radio" id="general" name="boardType" value="GENERAL" th:checked="${boardType == 'GENERAL'}">-->
+<!--        <label for="general">공지게시판</label>-->
+
+<!--        <input type="radio" id="internal" name="boardType" value="INTERNAL" th:checked="${boardType == 'INTERNAL'}">-->
+<!--        <label for="internal">익명게시판</label>-->
+<!--    </div>-->
+
+    <div class="list" th:if="${not #lists.isEmpty(boardList)}">
+        <div class="list-con">
+
+
+            <div class="title">
+                <div class="subject" th:if="${boardType2 == 'GENERAL'}">
+                    <h1>공지사항</h1>
+                    <h2>(주)SoleManager의 공지사항을 알려드립니다.</h2>
+
+
+                </div>
+                <div class="subject" th:if="${boardType2 == 'INTERNAL'}">
+                    <h1>사내게시판</h1>
+                    <h2>(주)SoleManager의 사내게시판입니다.</h2>
+
+                </div>
+            </div>
+
+            <div class="search">
+
+                    <form th:action="@{/board/list}" method="GET">
+                        <select name="subject" id="subject">
+                            <option value="title">제목</option>
+                            <option value="content">내용</option>
+                            <option value="writer">작성자</option>
+                        </select>
+                        <input type="hidden" name="boardType" th:value="${boardType2}">
+                        <input type="text" name="search" id="search" th:value="${search}" class="input1">
+                        <input type="submit" value="검색" class="input2">
+                    </form>
+
+            </div>
+
+            <div class="write">
+                <a th:href="@{/board/write}">글쓰기</a>
+            </div>
+
+            <div class="list-con">
+
+                <div class="list-table">
+                    <table border="1">
+                        <thead>
+                        <tr>
+                            <th class="th1">번호</th>
+                            <th class="th2">제목</th>
+                            <th class="th3">작성자</th>
+                            <th class="th5">조회수</th>
+                            <th class="th4">작성일자</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each = "board:${boardList.content}">
+                            <td th:text="${board.id}"></td>
+                            <td  class="td-title"><a th:href="@{/board/detail/{id}(id=${board.id})}" th:text="${board.title}"></a></td>
+                            <td th:text="${board.writer}"></td>
+                            <td th:text="${board.hit}"></td>
+                            <td th:text="${#temporals.format(board.createTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="paging">
+                    <ul>
+                        <li>
+                            <span th:if="${1==boardList.pageable.pageNumber+1}" class="span0"><img th:src="@{/images/board/first.png}" alt="first"></span>
+                            <span th:unless="${1==boardList.pageable.pageNumber+1}">
+                            <a th:href="@{/board/list(boardType=${boardType}, subject=${subject},search=${search},page=0,size=${pSize})}" class="span1"><img th:src="@{/images/board/first.png}" alt="first"></a>
+                         </span>
+                        </li>
+                        <li>
+                            <span th:if="${1==boardList.pageable.pageNumber+1}" class="span0"><img th:src="@{/images/board/pre.png}" alt="pre"></span>
+                            <span th:unless="${1==boardList.pageable.pageNumber+1}">
+                            <a th:href="@{/board/list(boardType=${boardType}, subject=${subject},search=${search},page=${boardList.pageable.pageNumber-1},size=${pSize})}" class="span1"><img th:src="@{/images/board/pre.png}" alt="pre"></a>
+                          </span>
+                        </li>
+                        <li th:each="i: ${#numbers.sequence(startPage, endPage)}" class="block">
+                            <span th:if="${i==boardList.pageable.pageNumber+1}" th:text="${i}" class="now"> </span>
+                            <a th:unless="${i==boardList.pageable.pageNumber+1}"
+                               th:href="@{/board/list(boardType=${boardType},subject=${subject},search=${search},page=${i-1},size=${pSize})}"
+                               th:text="${i}"></a>
+                        </li>
+                        <li>
+                            <span th:if="${boardList.totalPages==boardList.pageable.pageNumber+1}" class="span0"><img th:src="@{/images/board/next.png}" alt="next"></span>
+                            <span th:unless="${boardList.totalPages==boardList.pageable.pageNumber+1}">
+                            <a th:href="@{/board/list(boardType=${boardType}, subject=${subject},search=${search},page=${boardList.pageable.pageNumber+1},size=${pSize})}" class="span1"><img th:src="@{/images/board/next.png}" alt="next"></a>
+                        </span>
+                        </li>
+                        <li>
+                            <span th:if="${boardList.totalPages==boardList.pageable.pageNumber+1}" class="span0"><img th:src="@{/images/board/last.png}" alt="last"></span>
+                            <span th:unless="${boardList.totalPages==boardList.pageable.pageNumber+1}">
+                            <a th:href="@{/board/list(boardType=${boardType}, subject=${subject},search=${search},page=${boardList.totalPages-1},size=${pSize})}" class="span1"><img th:src="@{/images/board/last.png}" alt="last"></a>
+                      </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href=""></a>
+</div>
+</th:block>
+</body>
+</html>

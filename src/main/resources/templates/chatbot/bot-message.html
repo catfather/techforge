@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>chatbot</title>
+    <link rel="stylesheet" th:href="@{/css/chatbot/bot-message.css}">
+
+</head>
+<body>
+
+    <div class="chat-date" th:if="${msg.today}" th:text="${msg.today}"></div>
+    <div class="bot-message">
+        <div  class="icon">
+            <img th:src="@{/images/chatbot/chatbot_icon.png}">
+        </div>
+        <div class="message">
+            <div class="part" th:if="${msg.answer.keyword ne '프리랜서' or msg.answer.keyword ne '회사' or  msg.answer.info != null}">
+                <p th:utext="${msg.answer.content}"></p>
+            </div>
+            <div th:if="${msg.answer.keyword eq '프리랜서'}" >
+                <div th:replace="~{chatbot/fragments/freelancer :: freelancerFragment}"></div>
+            </div>
+            <div th:if="${msg.answer.keyword eq '회사'}" >
+                <div th:replace="~{chatbot/fragments/company :: companyFragment}"></div>
+            </div>
+            <div class="time" th:text="${msg.time}">메세지 작성 시간</div>
+        </div>
+    </div>
+
+
+</body>
+</html>

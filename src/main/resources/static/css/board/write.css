@@ -1,0 +1,106 @@
+@import url(/css/common/reset.css);
+@import url(/css/common/header.css);
+@import url(/css/common/sidebar.css);
+
+body{
+    background-color: #fff;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.write{
+    flex-basis: 1200px;
+    display: flex;
+    justify-content: center;
+    padding: 100px;
+    box-sizing: border-box;
+}
+
+.write .connect{
+
+}
+
+table{
+    width: 1200px;
+    text-align: left;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+tr{
+    
+}
+
+th{
+    width: 10%;
+    padding: 20px 10px;
+    box-sizing: border-box;
+    background-color: #f8f8f8;
+}
+
+td{
+    width: 80%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+td input.input-title{
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 80%;
+}
+
+td select.td-select{
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+td input.td-duration{
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+table .editor{
+    
+    height: 300px;
+}
+
+table .content{
+    width: 800px;
+    height: 300px;
+}
+
+.submit{
+    display: flex;
+    justify-content: flex-end;
+    padding: 30px 0;
+    box-sizing: border-box;
+}
+
+.submit input{
+    font-size: 24px;
+    background-color: #3483e1;
+    border-radius: 30px;
+    padding: 10px 40px;
+    box-sizing: border-box;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+}
+
+.submit input:hover{
+    background-color: #3277a9;
+}

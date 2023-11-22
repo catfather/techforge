@@ -1,0 +1,71 @@
+@import url(/css/common/reset.css);
+@import url(/css/common/header.css);
+@import url(/css/common/sidebar.css);
+
+body{
+    position: fixed;
+}
+.container{
+    width: 1720px;
+    padding: 10px 0 10px 0;
+    display: flex;
+    justify-content: center;
+}
+.container .content{
+    width: inherit;
+}
+.container .content .content-con{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* title */
+.content .content-con .content-header{
+    text-align: center;
+    padding-bottom: 100px;
+}
+/* .content .content-header h2{
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-around;
+} */
+/* main */
+.content .content-con .content-main{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    gap: 200px;
+}
+.content .content-main .left{
+    text-align: center;
+    width: 300px;
+    height: 300px;
+}
+.content .content-main .right{
+    text-align: center;
+    width: 300px;
+    height: 300px;
+}
+.content .content-main button{
+    cursor: pointer;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    border: none;
+    background-color: #152161;
+}
+.content .content-main button:hover{
+    background-color: #152061a4;
+    box-shadow: 5px 5px 5px 5px #152161;
+    color: #c5c5c5;
+}
+.content .content-main input{
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-size: 60px;
+    color: white;
+}

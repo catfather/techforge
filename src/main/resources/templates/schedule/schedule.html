@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5",
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout/baseLayout}">
+<head>
+    <meta charset="UTF-8">
+    <title>개인일정</title>
+    <link rel="stylesheet" th:href="@{/css/schedule/schedule.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js'></script>
+    <script th:src="@{/js/schedule/schedule.js}" defer="defer"></script>
+</head>
+<th:block layout:fragment="container">
+<body>
+<input id="memberId" type="hidden" th:value="${#authentication.principal.memberEntity.id}">
+<!--main-->
+<div class="container">
+    <!--내용 채우기-->
+    <div class="workCalendar">
+      <div id="content">
+          <h1 class="title">
+              일정관리
+          </h1>
+        <div id='calendar-container'>
+            <div id='calendar'>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<!--modal-->
+    <div class="modal">
+      <div class="modal-content">
+        <div class="btn">
+            <span class="red">
+                <a href="#none" class="btn-close">✕</a>
+            </span>
+            <span class="yellow">
+                <a href="">⎻</a>
+            </span>
+            <span class="green">
+                <a href="">◦</a>
+            </span>
+        </div>
+        <div class="modal-header">
+          <h2 class="modal-title">일정 추가</h2>
+        </div>
+
+        <div class="modal-main">
+            <div class="day">
+                <div class="start">
+                    <label for="calendar_start_date" class="col-form-label">근무 가능 시작일</label>
+                    <input type="datetime-local" class="form-control" id="calendar_start_date" name="start">
+                </div>
+                <div class="end">
+                    <label for="calendar_end_date" class="col-form-label">근무 가능 종료일</label>
+                    <input type="datetime-local" class="form-control" id="calendar_end_date" name="end">
+                </div>
+                <div class="title">
+                    <!--일정 제목-->
+                <label for="calendar-title">일정 제목</label>
+                <input type="text" id="cl_title" maxlength='15' placeholder="최대 15글자만 입력가능합니다.">
+            </div>
+            <div class="color">
+                    <!--색상표-->
+                <label for="calendar-color">색상</label>
+                <input type="color" id="cl_color_hex">
+            </div>
+            </div>
+            <input type="hidden" id="calendar_work_type" value="NORMAL">
+        </div>
+
+        <div class="modal-footer">
+            <div class="add">
+                <a href="#none" class="btn-add">추가</a>
+            </div>
+            <div class="close">
+                <a href="#none" class="btn-close">닫기</a>
+            </div>
+        </div>
+      </div>
+    </div>
+
+</body>
+</th:block>
+</html>

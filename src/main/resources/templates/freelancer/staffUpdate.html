@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout/baseLayout}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>회원수정</title>
+    <script th:src="@{/js/member/address.js}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script th:src="@{/js/member/address.js}"></script>
+    <script th:src="@{/js/freelan/freelancerUpdate.js}"></script>
+
+    <link rel="stylesheet" th:href="@{/css/freelancer/freelancerUpdate.css}">
+    <link rel="stylesheet" th:href="@{/css/member/joinCheck.css}">
+</head>
+<body>
+<th:block layout:fragment="container">
+<form th:action="@{/member/freeUpdate/{memberId}(memberId=${memberDto.id})}" method="post">
+    <input type="hidden" name="id" th:value="${memberDto.id}">
+    <ul class="mypage-list">
+        <li>
+            <label for="mail">이메일:</label>
+            <input type="text" name="email" id="mail" th:value="${memberDto.email}" class="readonly-input">
+            <span class="member_ok">사용 가능한 이메일입니다.</span>
+            <span class="member_already">이미 사용중인 이메일 입니다.</span>
+            <span class="email_expression">올바른 이메일을 작성해주세요.</span>
+            <button type="button" id="emailCheck">인증번호 받기</button>
+            <input type="text" id="certificationNumber">
+            <button type="button" id="certificationBtn">이메일인증확인</button>
+        </li>
+        <li>
+            <label for="name">이름:</label>
+            <input type="text" name="name" id="name" th:value="${memberDto.name}" class="input-field">
+        </li>
+        <li>
+            <label for="birth">생년월일:</label>
+            <input type="date" name="birth" id="birth" th:data-birth="${memberDto.birth}" class="input-field">
+        </li>
+        <li>
+            <label for="phone">전화번호:</label>
+            <input type="text" name="phone" id="phone" th:value="${memberDto.phone}" class="input-field">
+            <span class="phone_ok">사용 가능한 전화번호입니다.</span>
+            <span class="phone_already">이미 가입된 전화번호입니다.</span>
+            <span class="phone_expression">올바른 전화번호을 작성해주세요.</span>
+        </li>
+        <li>
+            <label for="career">경력:</label>
+            <input type="text" name="career" id="career" th:value="${memberDto.career}" class="input-field">
+        </li>
+        <li>
+            <span>우편번호:</span>
+            <input type="text" name="postcode" id="postcode" th:value="${memberDto.postcode}" class="input-field">
+            <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" class="button">
+        </li>
+        <li>
+            <label for="address">주소:</label>
+            <input type="text" name="address" id="address" th:value="${memberDto.address}" class="input-field">
+        </li>
+        <li>
+            <label for="detailAddress">상세주소:</label>
+            <input type="text" name="detailAddress" id="detailAddress" th:value="${memberDto.detailAddress}" class="input-field">
+            <input type="text" name="extraAddress" id="extraAddress" th:value="${memberDto.extraAddress}" class="input-field">
+        </li>
+        <li>
+            <input type="submit" value="수정" id="submit-button" class="submit-button">
+        </li>
+    </ul>
+</form>
+</th:block>
+</body>
+
+</html>

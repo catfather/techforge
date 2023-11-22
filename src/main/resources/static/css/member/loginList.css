@@ -1,0 +1,169 @@
+
+/* reset */
+*{
+    margin:0;
+    padding:0
+}
+html,body{
+    width:100%;
+    height:auto;
+}
+a{
+    text-decoration:none;
+    color:#000000;
+}
+ul,li{
+    list-style:none;
+}
+img{
+    width:100%;
+    border:0;
+}
+
+/* loginList start */
+.container{
+    width: 100%;
+}
+
+/* section1 start */
+.section1{
+
+    width: 100%;
+    justify-content: center;
+    padding: 5px 20px;
+    background-color: #fff;
+    gap: 10px;
+    box-sizing: border-box;
+
+}
+
+.section1 .nav{
+    flex-basis: 1600px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    gap: 10px;
+    padding: 5px 15px;
+    box-sizing: border-box;
+}
+
+.section1 .nav h1.logo a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section1 .nav h1.logo a img{
+    flex-basis: 120px;
+    height: 60px;
+}
+
+.section1 .nav .menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section1 .nav .menu ul{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.section1 .nav .menu ul li{
+    color: #474861;
+    font-size: 18px;
+    padding: 10px;
+    line-height: 40px;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+.section1 .nav .menu ul li a{
+    color: inherit;
+}
+
+.section1 .nav .menu ul li a:hover{
+    color: #5e5e73;
+    text-decoration: underline;
+}
+
+/* section2 start */
+.section2{
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 80px);
+    justify-content: center;
+    background-color: #F6F7FE;
+}
+
+.section2 .inner-con{
+    flex-basis: 100vw;
+    height: 100vh;
+    background: url(/images/index.png) no-repeat 50%/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 150px 80px;
+    gap: 10px;
+    box-sizing: border-box;
+}
+
+.section2 .inner-con .login-list .img{
+
+}
+
+.section2 .inner-con .login-list .img img{
+    width: 500px;
+    height: auto;
+}
+
+.section2 .inner-con .title h1{
+    font-size: 38px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.section2 .inner-con .login-list{
+    padding: 100px 100px 0 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.section2 .inner-con .login-list .login ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    gap: 20px;
+    padding: 40px;
+}
+
+.section2 .inner-con .login-list .login ul li{
+    width: 300px;
+    background-color: #474861;
+    border-radius: 50px;
+    height: 50px;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5), inset 0px -2px 0px -8px rgba(0, 0, 0, 0.3);
+}
+
+.section2 .inner-con .login-list .login a{
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+}
+
+.section2 .inner-con .login-list .login ul li:hover{
+    background-color: #5e5e73;
+}
+
+
+
+
+
+
+

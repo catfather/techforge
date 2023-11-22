@@ -1,0 +1,75 @@
+@import url(/css/common/reset.css);
+@import url(/css/common/header.css);
+@import url(/css/common/sidebar.css);
+
+body{
+    overflow-x: hidden;
+}
+.container-con{
+    width: inherit;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+}
+.container-con .container-header{
+    text-align: center;
+}
+.container-con .list{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    font-size: 35px;
+    align-items: center;
+    padding: 50px;
+}
+.container-con .list ul#parent{
+    display: flex;
+    justify-content: center;
+    height: 200px;
+    align-items: center;
+    width: 50vw;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 50px;
+}
+.container-con .list ul#child{
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    /* padding: 15px; */
+    width: 50vw;
+    list-style: none;
+    padding: 10px;
+}
+.container-con .list ul#child li{
+    position: relative;
+}
+.container-con .list ul#child li::before{
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 50%; /* 가운데에 위치시키기 위해 왼쪽에서 50%로 설정 */
+    width: 3px; /* 세로선의 두께 설정 */
+    height: 95%; /* 세로선의 높이를 `<li>` 요소의 높이와 동일하게 설정 */
+    background-color: black; /* 세로선의 색상 설정 */
+    transform: translateX(-50%);
+}
+.container-con .btn{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    height: 5vh;
+}
+button{
+    width: 10vw;
+    font-size: 20px;
+    background-color: transparent;
+    border-radius: 10px;
+    cursor: pointer;
+}
+button:hover{
+    font-size: 22px;
+    background-color: #c8c8c8;
+}

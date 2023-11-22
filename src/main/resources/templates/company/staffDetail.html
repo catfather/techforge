@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout/baseLayout}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>마이페이지</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script th:src="@{/js/member/nameChange.js}"></script>
+    <link rel="stylesheet" href="/css/company/companyDetail.css">
+</head>
+
+<th:block layout:fragment="container">
+    <body>
+    <div class="my-page-container">
+        <h1><span th:text="${memberDto.name}"></span>님 페이지</h1>
+        <ul class="user-info-list">
+            <li>
+                <span>회사명</span>
+                <span th:text="${memberDto.companyName}"></span>
+            </li>
+            <li>
+                <span>사업자등록번호</span>
+                <span th:text="${memberDto.businessNumber}"></span>
+            </li>
+            <li>
+                <span>대표</span>
+                <span th:text="${memberDto.name}"></span>
+            </li>
+            <li>
+                <span>이메일</span>
+                <span th:text="${memberDto.email}"></span>
+            </li>
+            <li>
+                <span>전화번호</span>
+                <span th:text="${memberDto.phone}"></span>
+            </li>
+            <li>
+                <span>우편번호</span>
+                <span th:text="${memberDto.postcode}"></span>
+            </li>
+            <li>
+                <span>주소</span>
+                <span th:text="${memberDto.address}"></span>
+            </li>
+            <li>
+                <span>상세주소</span>
+                <span th:text="${memberDto.detailAddress}"></span>
+            </li>
+            <li>
+                <span></span>
+                <span th:text="${memberDto.extraAddress}"></span>
+            </li>
+        </ul>
+
+        <div class="button-container">
+            <a class="my-page-button" th:href="@{/member/companyUp/{memberId}(memberId=${memberDto.id})}">회원정보 수정</a>
+            <a class="my-page-button" th:href="@{/member/pwChange/{memberId}(memberId=${memberDto.id})}">비밀번호 변경</a>
+            <a class="my-page-button" th:href="@{/member/disabled/{memberId}(memberId=${memberDto.id})}">계정 비활성화</a>
+        </div>
+
+    </div>
+    </body>
+</th:block>
+</html>

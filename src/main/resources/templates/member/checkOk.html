@@ -1,0 +1,58 @@
+[<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>비밀번호찾기</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="/css/member/checkOk.css">
+    <link rel="stylesheet" href="/css/member/checkOk_feedback.css">
+</head>
+<body>
+<div class="container">
+    <h1>비밀번호 설정</h1><br>
+    <form th:action="@{/member/checkOk}" method="post">
+        <div>
+            <div class="forTextLabel">
+                이메일
+            </div>
+            <div class="forText">
+                <input type="text" th:value="${email}" name="email" id="emailText" class="emailText" readonly>
+            </div>
+        </div>
+
+        <div class="in">
+            <div class="forTextLabel">
+                새 비밀번호
+            </div>
+            <div class="forText">
+                <input type="password" name="password" id="certificationNumber" class="password" autocapitalize="new-password">
+                <div class="feedback">
+                    <span class="pw_string">숫자와 영문자, 특수문자 조합으로 8~16자리를 사용해야 합니다.</span>
+                    <span class="pw_string1">사용 가능한 비밀번호입니다..</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="in1">
+            <div class="forTextLabel">
+                새 비밀번호 확인
+            </div>
+            <div class="forText">
+                <input type="password" name="newPassword" id="certificationNumber1" class="password"  autocapitalize="new-password">
+                <div class="feedback">
+                    <span class="pw_right">비밀번호가 일치합니다!</span>
+                    <span class="pw_not">비밀번호가 일치하지 않습니다..</span>
+                </div>
+            </div>
+
+            <div>
+                <input type="submit" class="btn" id="certificationBtn" value="설정완료"/>
+            </div>
+
+        </div>
+
+    </form>
+</div>
+<script th:src="@{/js/member/checkOk.js}"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/member/findPw1.js" defer></script>
+    <link rel="stylesheet" href="/css/member/findPw.css">
+</head>
+<body>
+<div class="container">
+    <h1>비밀번호 찾기</h1><br>
+    <div>
+        <div class="forTextLabel">
+            이메일
+        </div>
+        <div class="forText">
+            <input type="email" id="emailText">
+        </div>
+        <div>
+            <button id="emailCheck" onclick="emailSend()">인증번호 받기</button>
+        </div>
+    </div>
+    <div class="in">
+        <div class="forTextLabel">
+            인증번호
+        </div>
+        <div class="forText">
+            <input type="text" id="certificationNumber">
+        </div>
+        <div>
+            <button id="certificationBtn" onclick="emailCertification()">인증하기</button>
+            <input type="hidden" id="certificationYN" value="false">
+        </div>
+    </div>
+</div>
+</body>
+</html>

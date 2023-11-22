@@ -1,0 +1,14 @@
+@import url(/css/common/reset.css);
+@import url(/css/common/header.css);
+@import url(/css/common/sidebar.css);
+
+
+.container{
+    width: 100%;
+    display: flex;
+}
+
+.calendar{
+    flex-basis: 1200px;
+    height: auto;
+}

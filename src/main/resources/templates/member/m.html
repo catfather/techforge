@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<a th:href="@{/member/detail/{memberId}(memberId=${#authentication.principal.memberEntity.id})}">member마이페이지</a>
+<a th:href="@{/member/freeDetail/{memberId}(memberId=${#authentication.principal.memberEntity.id})}">프리렌서마이페이지</a>
+<a th:href="@{/member/companyDetail/{memberId}(memberId=${#authentication.principal.memberEntity.id})}">회사마이페이지</a>
+<a th:href="@{/member/pwChange/{memberId}(memberId=${#authentication.principal.memberEntity.id})}">비밀번호 변경</a>
+
+
+<a th:href="@{/member/freeList}">프리랜서 리스트</a>
+<a th:href="@{/member/companyList}">회사 리스트</a>
+<a th:href="@{/member/staffList}">직원 리스트</a>
+<a th:href="@{/}">main</a>
+
+
+<th:block  sec:authorize="isAuthenticated()">
+    <a th:href="@{/member/logout}">로그아웃</a>
+</th:block>
+
+</body>
+</html>
+
+
+
+
+

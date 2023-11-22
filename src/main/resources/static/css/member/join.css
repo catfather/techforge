@@ -1,0 +1,114 @@
+@import "/css/common/reset.css";
+/* 폼 전체 스타일 */
+#adminJoinForm {
+    width: auto;
+    padding: 20px 20px 20px 250px;
+    border: 1px solid #eaeaf0;
+    border-radius: 5px;
+    background-color: #eaeaf0;
+
+}
+
+#form1 {
+    border: 5px solid white;
+    padding: 20px 20px 20px 20px;
+    width: 821px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+#form1 .form1-1{
+    align-items: center;
+    display: flex;
+}
+#form1 .form1-2{
+    align-items: center;
+    display: flex;
+}
+#form3 .form1-3{
+    align-items: center;
+    display: flex;
+}
+#form2 {
+    border: 5px solid white;
+    padding: 20px 20px 20px 20px;
+    width: 821px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+#form3 {
+    border: 5px solid white;
+    padding: 20px 20px 20px 20px;
+    width: 821px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+/* 입력 필드 스타일 */
+#adminJoinForm input[type="text"],
+#adminJoinForm input[type="password"],
+#adminJoinForm input[type="date"],
+#adminJoinForm .form-control {
+    width: 795px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-size: 17px;
+    display: flex;
+    margin: 10px 0px;
+}
+
+.genderList {
+    margin: 10px 0px;
+}
+
+/* 버튼 스타일 */
+#adminJoinForm button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#adminJoinForm button:hover {
+    background-color: #0056b3;
+}
+
+/* 피드백 메시지 스타일 */
+#adminJoinForm .feedback span {
+    display: none;
+    color: #d9534f;
+}
+
+#adminJoinForm .feedback .member_ok {
+    color: #5bc0de;
+}
+
+.h11 {
+    padding-left: 570px;
+    width: 800px
+}
+
+#mail {
+    width: 660px !important;
+}
+#postcode {
+    width: 660px !important;
+}
+#certificationNumber {
+    width: 650px !important;
+}
+
+#emailCheck {
+    margin-left: 10px; /* 인증번호 받기 버튼과 이메일 입력란 사이의 간격을 조절합니다. */
+}
+#certificationBtn {
+    margin-left: 10px; /* 인증번호 받기 버튼과 이메일 입력란 사이의 간격을 조절합니다. */
+}
+#uphyeon {
+    margin-left: 10px; /* 인증번호 받기 버튼과 이메일 입력란 사이의 간격을 조절합니다. */
+}
+

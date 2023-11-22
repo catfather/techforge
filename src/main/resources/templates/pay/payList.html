@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout/baseLayout}">
+<head>
+    <meta charset="UTF-8">
+    <title>월급내역</title>
+    <link rel="stylesheet" th:href="@{/css/pay/payList.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script th:src="@{/js/pay/payList.js}" defer="defer"></script>
+</head>
+<th:block layout:fragment="container">
+<body>
+<div class="container-con">
+    <div class="payList">
+        <div class="payList-con">
+            <div class="payList-header">
+                <th:block sec:authorize="hasAnyRole('STAFF')">
+                    <h1>월급내역</h1>
+                </th:block>
+                <th:block sec:authorize="hasAnyRole('FREELANCER')">
+                    <h1>지급내역</h1>
+                </th:block>
+            </div>
+            <div class="search">
+                <div class="form">
+                    <form th:action="@{/pay/payList/{memberId}(memberId=${#authentication.principal.memberEntity.id})}" method="get" class="year">
+                        <select name="workYear" id="workYear" class="workYear">
+                            <!--java script 에서 optiont설정-->
+                        </select>
+                        <button type="submit">
+                            <img th:src="@{/images/worktime/zoom.png}" alt="검색" class="zoom">
+                        </button>
+                            <!-- <input type="submit" value="선택하기" class="choice"> -->
+                    </form>
+                    <div th:each="year:${year}" class="yearSpan">
+                        <span th:text="${year}"></span>
+                        <span> 년을 선택하셨습니다.</span>
+                    </div>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>지급월</th>
+                    <th>지급날</th>
+                    <th>지급액</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="pay:${payList}">
+                    <td th:text="${pay.monthly}"></td>
+                    <td th:text="${pay.payDay}"></td>
+                    <td th:text="${pay.price}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</th:block>
+</html>

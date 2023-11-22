@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<div id="header" class="header" th:fragment="headerFragment">
+    <div class="nav">
+        <div class="left-nav">
+            <a th:href="@{/home}"><img th:src="@{/images/logo2.png}" alt="HOME"></a>
+        </div>
+        <div class="right-nav">
+            <ul>
+                <li>
+                    <span id="btn-chat-open" onclick="openChat()" class="chatbot"><img th:src="@{/images/chatbot/chatbot.png}" alt="chatbot"></span>
+                </li>
+                <li><a th:href="@{/}"><img th:src="@{/images/worktime/zoom.png}" alt="검색" class="zoom"></a></li>
+                <li><a th:href="@{/}"><img th:src="@{/images/worktime/list.png}" alt="리스트" class="list"></a></li>
+                <li>
+                    <a href="https://mail.worksmobile.com/write/popup"
+                       onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;">
+                        <img th:src="@{/images/mail.png}" alt="메일" class="mail">
+                    </a>
+                </li>
+                <li><a th:href="@{/member/logout}">로그아웃</a></li>
+                <li><span th:text="${#authentication.principal.memberEntity.name}" class="name"></span> 님</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="chat-container" class="chatbot-con">
+        <h3 id="chat-header">
+            <span>챗봇</span>
+            <span class="btn-wrap">
+					<button type="button" id="btn-chat-close" onclick="disconnect()">X</button>
+				</span>
+        </h3>
+        <div id="chat-content" class="chat-content"></div>
+        <div id="chat-question" class="chat-question">
+            <span class="icon" onclick="help()"><i><img th:src="@{/images/board/question.png}" alt="question"></i></span>
+            <input type="text" id="question" placeholder="질문을 입력하세요">
+            <button type="button" id="sendBtn" onclick="sendBtnClicked()">전송</button>
+        </div>
+    </div>
+</div>
+</html>

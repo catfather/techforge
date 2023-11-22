@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+    <script th:src="@{/js/member/address.js}" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js" defer></script>
+    <link rel="stylesheet" href="/css/member/oauth2add.css">
+</head>
+<body>
+<div class="container">
+    <div class="container-con">
+        <div class="update">
+            <div class="update-con">
+                <div class="update-header">
+                    <h1>추가 정보 입력</h1>
+                </div>
+
+                <div class="update-header2">
+                    <span>*</span>
+                    <span>필수입력사항</span>
+                </div>
+
+                <form th:action="@{/member/oauth2add}" method="post">
+                    <ul>
+                        <input type="hidden" name="id" th:value="${memberDto.id}" readonly class="readonly">
+                        <input type="hidden" name="email" th:value="${memberDto.email}" readonly class="readonly">
+                        <input type="hidden" name="password" th:value="${memberDto.password}" class="readonly">
+                        <input type="hidden" name="name" th:value="${memberDto.name}" readonly class="readonly">
+                        <input type="hidden" name="grade" th:value="${memberDto.grade}" readonly class="readonly">
+                        <input type="hidden" name="is_display" th:value="1" readonly class="readonly">
+
+                        <li>
+                            <label for="birth">
+                                생일
+                                <span>*</span>
+                            </label>
+                                <input type="date" id="birth" name="birth" class="birth" min="1900-01-01" value="2000-01-01">
+                            <div></div>
+                        </li>
+
+                        <li>
+                            <label for="phone">
+                                휴대폰
+                                <span>*</span>
+                            </label>
+                            <input type="text" name="phone" id="phone"  >
+                            <div></div>
+                        </li>
+
+
+                        <li>
+                            <label for="postcode">
+                                우편번호
+                                <span>*</span>
+                            </label>
+                            <input type="text" name="postcode" id="postcode"  >
+                            <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+                            <div></div>
+                        </li>
+                        <li>
+                            <label for="address">
+                                주소
+                                <span>*</span>
+                            </label>
+                            <input type="text" name="address" id="address"  >
+                            <div></div>
+                        </li>
+                        <li>
+                            <label for="address">
+                                상세주소
+                                <span>*</span>
+                            </label>
+                            <input type="text" name="detailAddress" id="detailAddress" >
+                            <input type="text" name="extraAddress" id="extraAddress"  >
+                            <div></div>
+                        </li>
+
+                        <li class="gender-label">
+                            <input type="radio" id="male" name="gender" class="form-check-input" value="M">
+                            <label for="male" class="male">남성</label>
+                            <input type="radio" id="female" name="gender" class="form-check-input" value="F">
+                            <label for="female" class="female">여성</label>
+                            <div></div>
+                        </li>
+
+                        <li>
+                            <label for="address">
+                                이력
+                                <span>*</span>
+                            </label>
+                            <input type="text" name="career" id="career" >
+                            <div></div>
+                        </li>
+
+                    </ul>
+                    <div class="go-update">
+                        <input type="submit" value="추가하기">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

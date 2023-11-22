@@ -1,0 +1,216 @@
+@import url(/css/common/reset.css);
+@import url(/css/common/header.css);
+@import url(/css/common/sidebar.css);
+
+#content {
+    width: 80vw;
+    text-align: center;
+    margin: 0 auto
+}
+
+h1.title {
+    width: inherit;
+    display: flex;
+    font-weight: bold;
+    color: #454863;
+    padding: 10px;
+}
+
+#calendar {
+    width: 80vw;
+    height: 80vh;
+    margin: 0 auto
+}
+
+.container .workCalendar{
+    position: fixed;
+    left: 300px;
+}
+
+#calendarBox {
+    width: 70%;
+    padding-left: 15%;
+}
+/* modal */
+.modal{
+    position: fixed;
+    background-color: #eaeaf07b;
+    top:0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 9999;
+    display: none;
+}
+.modal-content{
+    background-color: #282c34;
+    border-radius: 10px;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 1000px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    color: #abb2bf;
+    gap: 20px;
+}
+
+.modal-content .btn{
+    display: flex;
+    padding: 10px;
+    background-color: #434041;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.modal-content .btn span{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0 5px;
+    line-height: 23px;
+}
+.modal-content .btn span:hover{
+    opacity: 0.3;
+}
+span.red{
+    background-color: #f5655b;
+}
+span.yellow{
+    background-color: #f6bd3b;
+}
+span.green{
+    background-color: #43c645;
+}
+/* title */
+.modal .modal-content .modal-header h2{
+    font-size: 40px;
+    color: white;
+}
+/* main */
+.modal .modal-content .modal-main{
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.modal .modal-content .modal-main .day{
+    font-size: 2vh;
+}
+/* 근무시작 */
+.modal .modal-content .modal-main .day .start{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5vh;
+    gap: 10px;
+}
+.modal .modal-content .modal-main .day .start label{
+    /* width: 10vw; */
+    height: 2vh;
+    padding: 10px;
+}
+/* 근무종료 */
+.modal .modal-content .modal-main .day .end{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5vh;
+    gap: 10px;
+}
+.modal .modal-content .modal-main .day .end label{
+    /* width: 10vw; */
+    height: 2vh;
+    padding: 10px;
+}
+/* 제목 */
+.modal .modal-content .modal-main .day .title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5vh;
+    gap: 10px;
+}
+.modal .modal-content .modal-main .day .title label{
+    /* width: 10vw; */
+    height: 2vh;
+    padding: 10px;
+}
+/* 색상 */
+.modal .modal-content .modal-main .day .color{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 5vh;
+    /* gap: 12vh; */
+}
+.modal .modal-content .modal-main .day .color label{
+    /* width: 10vw; */
+    height: 2vh;
+    padding: 10px;
+}
+.modal .modal-content .modal-main .day .color input{
+    width: 2vw;
+    height: 2vh;
+    border: none;
+    cursor: pointer;
+    /* background-color: transparent; */
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+
+}
+.modal .modal-content .modal-main .day .color input::-webkit-color-swatch{
+    width: 2vw;
+    height: 3vh;
+    border: none;
+}
+/* modal-footer */
+.modal .modal-content .modal-footer{
+   display: flex;
+   justify-content: space-evenly;
+   font-size: 23px;
+}
+.modal .modal-content .modal-footer .add{
+    padding: 10px;
+    background-color: #454863;
+    width: 150px;
+    border-radius: 10px;
+    transition: all 0.5s;
+}
+.modal .modal-content .modal-footer .add a{
+    color: white;
+}
+.modal .modal-content .modal-footer .add:hover{
+    background-color: #4548637c;
+    font-weight: bold;
+}
+.modal .modal-content .modal-footer .close{
+    padding: 10px;
+    background-color: #4e5169;
+    width: 150px;
+    border-radius: 10px;
+    transition: all 0.5s;
+}
+.modal .modal-content .modal-footer .close a{
+    color: white;
+}
+.modal .modal-content .modal-footer .close:hover{
+    background-color: #4e51697c;
+    font-weight: 20px;
+}
+/* input공통 */
+input{
+    text-align: center;
+    font-size: 18px;
+    width: 16vw;
+}
+input:focus{
+    outline: none;
+}

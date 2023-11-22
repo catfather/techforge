@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout/baseLayout}"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>write</title>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js'></script>
+
+    <script th:src="@{/js/approval/write.js}" defer></script>
+
+    <link rel="stylesheet" th:href="@{/css/approval/write.css}">
+
+
+
+</head>
+<body>
+<th:block layout:fragment="container">
+    <div class="container">
+
+
+        <div class="write">
+            <div class="connect">
+                <label>제목</label>
+                <input type="text" name="title" id="title" required>
+
+                <label>내용</label>
+                <div id="editor"></div>
+
+                <label>대상</label>
+                <select name="name" id="name">
+                    <option value="freelancer">프리랜서</option>
+                    <option value="company">회사</option>
+                </select>
+
+                <input type="hidden" name="content" id="content">
+
+                <input type="submit" value="글쓰기" onclick="connectBtn2()">
+            </div>
+
+        </div>
+    </div>
+</th:block>
+</body>
+</html>

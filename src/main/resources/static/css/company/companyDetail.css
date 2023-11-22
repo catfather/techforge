@@ -1,0 +1,65 @@
+@import url(/css/common/reset.css);
+@import url(/css/common/header.css);
+@import url(/css/common/sidebar.css);
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.my-page-container {
+    background-color: #fff;
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+h1 {
+    font-size: 28px;
+    color: #333;
+}
+
+/* 사용자 정보 리스트 스타일 */
+.user-info-list {
+    list-style: none;
+    padding: 0;
+}
+
+.user-info-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/*.user-info-list li:last-child {*/
+/*    border-bottom: none;*/
+/*}*/
+
+/* 스타일링된 버튼 */
+.my-page-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    margin: 10px;
+    border-radius: 10px;
+}
+

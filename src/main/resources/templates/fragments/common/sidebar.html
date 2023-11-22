@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<div id="sidebar" class="sidebar" th:fragment="sidebarFragment">
+    <div class="side">
+        <th:block sec:authorize="hasAnyRole('STAFF','ADMIN')">
+            <div class="admin">
+                <ul>
+                    <li><span>관리자</span></li>
+                </ul>
+            </div>
+        </th:block>
+
+        <th:block sec:authorize="hasAnyRole('FREELANCER')">
+            <div class="freelancer">
+                <ul>
+                    <li><span>프리랜서</span></li>
+                </ul>
+            </div>
+        </th:block>
+
+        <th:block sec:authorize="hasAnyRole('COMPANY')">
+            <div class="company">
+                <ul>
+                    <li><span>회사</span></li>
+                </ul>
+            </div>
+        </th:block>
+
+        <div class="sideBar">
+            <div class="sideBar-sec">
+                <ul class="big">
+                    <li><a href="#">내 정보</a>
+                        <ul class="small">
+                            <th:block sec:authorize="hasAnyRole('STAFF','ADMIN')">
+                                <li>
+                                    <a th:href="@{/common/detail}">마이페이지</a>
+                                </li>
+                            </th:block>
+
+                            <th:block sec:authorize="hasAnyRole('FREELANCER')">
+                                <li>
+                                    <a th:href="@{/member/freeDetail}">마이페이지</a>
+                                </li>
+                            </th:block>
+
+                            <th:block sec:authorize="hasAnyRole('COMPANY')">
+                                <li>
+                                    <a th:href="@{/member/companyDetail}">마이페이지</a>
+                                </li>
+                            </th:block>
+
+                            <th:block sec:authorize="hasAnyRole('STAFF','ADMIN')">
+                                <li>
+                                    <a th:href="@{/pay/payList/{memberId}(memberId=${#authentication.principal.memberEntity.id})}">월급내역</a>
+                                </li>
+                            </th:block>
+                            <th:block sec:authorize="hasAnyRole('FREELANCER')">
+                                <li>
+                                    <a th:href="@{/pay/payList/{memberId}(memberId=${#authentication.principal.memberEntity.id})}">지급내역</a>
+                                </li>
+                            </th:block>
+                        </ul>
+                    </li>
+                    <th:block sec:authorize="hasAnyRole('STAFF','FREELANCER','ADMIN')">
+                    <li><a href="#">근무/근태</a>
+                        <ul class="small">
+                            <th:block sec:authorize="hasAnyRole('STAFF','ADMIN')">
+                            <li>
+                                <a th:href="@{/work/commute}">출근/퇴근</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/work}">근무기록</a>
+                            </li>
+                            </th:block>
+
+                                <li>
+                                    <a th:href="@{/pay/payList/{memberId}(memberId=${#authentication.principal.memberEntity.id})}">월급내역</a>
+                                </li>
+
+                                <th:block sec:authorize="hasAnyRole('FREELANCER')">
+                                    <li>
+                                        <a th:href="@{/schedule/index/{memberId}(memberId=${#authentication.principal.memberEntity.id})}">일정관리</a>
+                                    </li>
+                                </th:block>
+                            </ul>
+                        </li>
+                    </th:block>
+
+                    <th:block sec:authorize="hasAnyRole('STAFF')">
+                        <li><a href="#">공지사항</a>
+                            <ul class="small">
+                                <li>
+                                    <a th:href="@{/board/calendar}">전체일정</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/board/list?boardType=GENERAL}">전체공지</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/board/list?boardType=INTERNAL}">사내게시판</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/board/write}">바로 작성하기</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </th:block>
+
+                    <li><a href="#">결재</a>
+                        <ul class="small">
+                            <li>
+                                <a th:href="@{/approval/create}">결재하기</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/approval/list}">결재대기</a>
+                            </li>
+                            <th:block sec:authorize="hasAnyRole('FREELANCER')">
+                                <li>
+                                    <a th:href="@{/approval/project}">진행 중인 프로젝트</a>
+                                </li>
+                            </th:block>
+                            <li>
+                                <a th:href="@{/approval/pay}">정산하기</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <th:block sec:authorize="hasAnyRole('ADMIN', 'STAFF')">
+                        <li>
+                            <a href="#">직원관리</a>
+                            <ul class="small">
+                                <th:block sec:authorize="hasAnyRole('ADMIN')">
+                                    <li>
+                                        <a th:href="@{/member/staffList}">직원목록</a>
+                                    </li>
+                                </th:block>
+                                <li>
+                                    <a th:href="@{/member/freeList}">프리랜서목록</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/member/companyList}">회사목록</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/naver/index}">조직도</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </th:block>
+
+                    <th:block sec:authorize="hasAnyRole('FREELANCER')">
+                        <li><a href="#">공고</a>
+                            <ul class="small">
+                                <li>
+                                    <a th:href="@{/approval/create}">공고지원</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/approval/project}">진행 중인 프로젝트</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/approval/list}">지원내역</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </th:block>
+
+                    <th:block sec:authorize="hasAnyRole('COMPANY')">
+                        <li><a href="#">공고</a>
+                            <ul class="small">
+                                <li>
+                                    <a th:href="@{/approval/create}">공고올리기</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/approval/list}">공고요청</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </th:block>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

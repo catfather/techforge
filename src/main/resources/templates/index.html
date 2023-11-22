@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout/baseLayout}">
+<head>
+    <meta charset="UTF-8">
+    <title>MAIN</title>
+    <link rel="stylesheet" th:href="@{/css/common/index.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!--    calendar-->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script th:src="@{/js/board/calendar.js}" defer></script>
+    <script th:src="@{/js/index.js}" defer></script>
+</head>
+<th:block layout:fragment="container">
+    <body>
+    <div class="box">
+        <div class="left">
+            <th:block sec:authorize="hasAnyRole('STAFF')">
+                <div class="notice">
+                <h2>공지 사항</h2>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>게시판유형</th>
+                        <th>작성시간</th>
+                        <th>조회수</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each = "board:${boardList}">
+                        <td th:text="${board.id}"></td>
+                        <td><a th:href="@{/board/detail/{id}(id=${board.id})}" th:text="${board.title}"></a></td>
+                        <td th:text="${board.writer}"></td>
+                        <td th:text="${#strings.toString(board.boardType)}"></td>
+                        <td th:text="${#temporals.format(board.createTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                        <td th:text="${board.hit}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            </th:block>
+            <th:block sec:authorize="hasAnyRole('FREELANCER')">
+                <!-- table말고 div -->
+                <div class="detail">
+                    <h2>내정보</h2>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>이름</th>
+                            <th>생년월일</th>
+                            <th>이메일</th>
+                            <th>전화번호</th>
+                        </tr>
+                        </thead>
+                        <tbody class="detailTbody">
+                            <td th:text="${#authentication.principal.memberEntity.name}"></td>
+                            <td th:text="${#authentication.principal.memberEntity.birth}"></td>
+                            <td th:text="${#authentication.principal.memberEntity.email}"></td>
+                            <td th:text="${#authentication.principal.memberEntity.phone}"></td>
+                        </tbody>
+                    </table>
+                </div>
+            </th:block>
+            <th:block sec:authorize="hasAnyRole('COMPANY')">
+                <div class="detail">
+                    <h2>내정보</h2>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>회사명</th>
+                            <th>사업자번호</th>
+                            <th>대표자명</th>
+                            <th>이메일</th>
+                            <th>전화번호</th>
+                        </tr>
+                        </thead>
+                        <tbody class="detailTbody">
+                        <td th:text="${#authentication.principal.memberEntity.name}"></td>
+                        <td th:text="${#authentication.principal.memberEntity.businessNumber}"></td>
+                        <td th:text="${#authentication.principal.memberEntity.companyName}"></td>
+                        <td th:text="${#authentication.principal.memberEntity.email}"></td>
+                        <td th:text="${#authentication.principal.memberEntity.phone}"></td>
+                        </tbody>
+                    </table>
+                </div>
+            </th:block>
+        </div>
+        <div class="middle">
+            <!--        calendar-->
+            <div class="calendar">
+                <main>
+                    <div id="fill">
+                        <div id='calendar-container'>
+                            <div id='calendar'></div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"   aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="btn">
+                                    <span class="red">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </span>
+                                    <span class="yellow">
+                                        <a href="">⏤</a>
+                                    </span>
+                                    <span class="green">
+                                        <a href="">⎔</a>
+                                    </span>
+                                </div>
+                                <div class="modal-header">
+                                    <h2 class="modal-title" id="exampleModalLabel">일정을 입력하세요.</h2>
+                                    <!-- <div class="exit">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div> -->
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <div class="content">
+                                            <label for="calendar_content" class="col-form-label">일정 내용</label>
+                                            <input type="text" class="form-control" id="calendar_content" name="content">
+                                        </div>
+                                        <div class="date">
+                                            <div class="start">
+                                                <label for="calendar_start_date" class="col-form-label">시작 날짜</label>
+                                                <input type="datetime-local" class="form-control" id="calendar_start_date" name="start">
+                                            </div>
+                                            <div class="end">
+                                                <label for="calendar_end_date" class="col-form-label">종료 날짜</label>
+                                                <input type="datetime-local" class="form-control" id="calendar_end_date" name="end">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-warning" id="addBtn">추가</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="sprintSettingModalClose">취소
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </main>
+            </div>
+
+        </div>
+        <div class="right">
+            <div class="mail">
+            </div>
+            <div class="chat">
+
+
+            </div>
+        </div>
+    </div>
+    </body>
+</th:block>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout/baseLayout}">
+<head>
+    <meta charset="UTF-8">
+    <title>detail</title>
+    <script th:src="@{/js/board/reply.js}" defer></script>
+    <link rel="stylesheet" th:href="@{/css/board/detail.css}">
+</head>
+<body>
+<th:block layout:fragment="container">
+<div class="container">
+    <div class="detail">
+        <table class="detail-table" border="1">
+            <tr>
+                <td class="td-title"><span th:text="${board.title}"></span></td>
+            </tr>
+            <tr>
+                <td><span>작성자</span><span th:text="${board.writer}"></span></td>
+            </tr>
+            <tr>
+                <td><span>회원아이디</span><span th:text="${board.memberEntity.email}"></span></td>
+            </tr>
+            <tr>
+                <td>
+                    <span>작성일자</span>
+                    <span th:text="${#temporals.format(board.createTime, 'yyyy-MM-dd HH:mm:ss')}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><span>게시기간</span><span th:text="${board.startDate}"></span><span th:text="${board.endDate}"></span></td>
+            </tr>
+            <tr>
+                <td><span>조회수</span><span th:text="${board.hit}"></span></td>
+            </tr>
+            <tr>
+                <td><span>첨부파일</span>
+                    <span th:if="${board.isFile}==1">
+                            <a th:href="@{/download/board/{file}(file=${board.getFileEntities().get(0).getNewName()})}"
+                               th:download="${board.getFileEntities().get(0).getOldName()}"
+                               th:text="${board.getFileEntities().get(0).getOldName()}"></a>
+                        </span>
+                    <span th:unless="${board.isFile}==1">비어있음</span>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td><span th:utext="${board.content}"></span></td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/board/delete/{id}(id=${board.id})}">삭제</a>
+                    <a th:href="@{/board/update/{id}(id=${board.id})}">수정</a>
+                    <a th:href="@{/board/list}">목록</a>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+
+
+    <div class="reply">
+        <div class="reply-write">
+            <h1>댓글작성</h1>
+            <ul>
+                <li>
+                    <input type="hidden" name="boardId" id="boardId" th:value="${board.id}">
+                </li>
+                <li>
+                    <label th:for="writer">작성자</label>
+                    <input type="text" name="writer" id="writer">
+                </li>
+                <li>
+                    <label th:for="content">작성자</label>
+                    <input type="text" name="content" id="content">
+                </li>
+                <li>
+                    <input type="button" value="댓글작성" id="replyWriteBtn">
+                </li>
+            </ul>
+        </div>
+
+        <div class="reply-list">
+                <table class="list-table">
+                    <tbody id="replyData">
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div>
+</th:block>
+</body>
+</html>
+

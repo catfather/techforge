@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout/baseLayout}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>프리렌서마이페이지</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script th:src="@{/js/member/genderChange.js}"></script>
+ <link rel="stylesheet" th:href="@{/css/freelancer/freelancerDetail.css}">
+</head>
+
+<body>
+<th:block layout:fragment="container">
+    <div class="my-page-container">
+        <h1><span th:text="${memberDto.name}"></span>님 페이지</h1>
+        <ul class="user-info-list">
+            <li>
+                <span>이름: </span>
+                <span th:text="${memberDto.name}"></span>
+            </li>
+            <li>
+                <span>생년월일: </span>
+                <span th:text="${memberDto.birth}"></span>
+            </li>
+            <li>
+                <span>이메일: </span>
+                <span th:text="${memberDto.email}"></span>
+            </li>
+            <li>
+                <span>전화번호: </span>
+                <span th:text="${memberDto.phone}"></span>
+            </li>
+            <li>
+                <span>성별: </span>
+                <input type="hidden" id="gender" th:value="${memberDto.grade}">
+                <div id="genderView">
+
+                </div>
+            </li>
+            <li>
+                <span>경력사항: </span>
+                <span th:text="${memberDto.career}"></span>
+            </li>
+            <li>
+                <span>우편번호: </span>
+                <span th:text="${memberDto.postcode}"></span>
+            </li>
+            <li>
+                <span>주소: </span>
+                <span th:text="${memberDto.address}"></span>
+            </li>
+            <li>
+                <span>상세주소: </span>
+                <span th:text="${memberDto.detailAddress}"></span>
+                <span th:text="${memberDto.extraAddress}"></span>
+            </li>
+        </ul>
+        <div class="button-container">
+            <a class="my-page-button" th:href="@{/member/freeUp/{memberId}(memberId=${memberDto.id})}">회원정보 수정</a>
+            <a class="my-page-button" th:href="@{/member/pwChange/{memberId}(memberId=${memberDto.id})}">비밀번호 변경</a>
+            <a class="my-page-button" th:href="@{/member/disabled/{memberId}(memberId=${memberDto.id})}">계정비활성화</a>
+        </div>
+    </div>
+</th:block>
+</body>
+
+</html>

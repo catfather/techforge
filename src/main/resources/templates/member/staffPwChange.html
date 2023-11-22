@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>비밀번호 변경</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script th:src="@{/js/member/pwChange.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/member/join.css}">
+    <link rel="stylesheet" th:href="@{/css/member/passwordChange.css}">
+</head>
+<body>
+
+<form th:action="@{/member/pwChange/{memberId}(memberId=${memberDto.id})}" id="pwChangeForm" method="post">
+    <ul>
+    <li class="passCheck">
+        <input type="password" name="existingPassword" id="password"> <br>
+        <button type="button" onclick="passCheck()">비밀번호 확인</button>
+    </li>
+        <li>
+            <input type="password" name="password" id="newPassword" oninput="checkPws()">
+        </li>
+        <li>
+            <span class="pw_string">숫자와 영문자, 특수문자 조합으로 8~16자리를 사용해야 합니다.</span>
+            <span class="pw_length">숫자와 영문자, 특수문자를 혼용하여야 합니다.</span>
+            <span class="pw_true">같은 문자를 3번 이상 사용하실 수 없습니다.</span>
+            <span class="pw_email">비밀번호에 이메일이 포함되었습니다.</span>
+        </li>
+        <li>
+            <input type="password" name="checkPassword" id="checkPassword" oninput="check_pw()">
+        </li>
+        <li>
+            <span class="password_already">비밀번호가 일치하지 않습니다.</span>
+        </li>
+        <li>
+            <input type="hidden" name="email" id="email" th:value="${memberDto.email}">
+            <input type="hidden" name="id" id="id" th:value="${memberDto.id}">
+        </li>
+        <li>
+            <div class="button-container">
+                <input type="submit" value="비밀번호변경" onclick="passChangeForm()">
+                <input type="button" value="뒤로가기" onclick="history.back()" class="back-button">
+            </div>
+        </li>
+    </ul>
+</form>
+</body>
+</html>

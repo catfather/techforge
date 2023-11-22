@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout/baseLayout}">
+<head>
+    <meta charset="UTF-8">
+    <title>detail</title>
+    <script th:src="@{/js/board/reply.js}" defer></script>
+    <link rel="stylesheet" th:href="@{/css/board/detail.css}">
+
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<th:block layout:fragment="container">
+
+    <div class="container">
+        <div class="detail">
+
+            <div class="title">
+                <div class="subject" th:if="${boardType == 'GENERAL'}">
+                    <a th:href="@{/board/list?boardType=GENERAL}">
+                        <hr class="hr-text" data-content="공지사항">
+                    </a>
+                </div>
+                <div class="subject" th:if="${boardType == 'INTERNAL'}">
+                    <a th:href="@{/board/list?boardType=INTERNAL}">
+                        <hr class="hr-text" data-content="사내게시판">
+                    </a>
+                </div>
+            </div>
+
+            <div class="detail-con">
+                <table class="detail-table">
+                    <tr>
+                        <td colspan="3" class="td-title"><span th:text="${board.title}"></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="td-writer"><span th:text="${board.writer}"></span></td>
+                    </tr>
+                    <tr class="tr-con">
+                        <td class="td-createTime">
+                            <span th:text="${#temporals.format(board.createTime, 'yyyy년 MM월 dd일 HH:mm')}"></span>
+                        </td>
+                        <td class="td-hit">
+                            <span><img th:src="@{/images/board/lightning.png}" alt="lightning"></span><span th:text="${board.hit}"></span>
+                        </td>
+                        <td class="td-duration">
+                            <span><img th:src="@{/images/board/duration.png}" alt="duration"></span><span th:text="${board.startDate}"></span><span>~</span><span th:text="${board.endDate}"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="td-file">
+                            <span><img th:src="@{/images/board/file.png}" alt="file"></span>
+                            <span th:if="${board.isFile}==1">
+                                <a th:href="@{/download/board/{file}(file=${board.getFileEntities().get(0).getNewName()})}"
+                                   th:download="${board.getFileEntities().get(0).getOldName()}"
+                                   th:text="${board.getFileEntities().get(0).getOldName()}"></a>
+                            </span>
+                            <span th:unless="${board.isFile}==1">비어있음</span></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="td-content"><span th:utext="${board.content}"></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="td-menu">
+
+                            <a th:href="@{/board/delete/{id}(id=${board.id})}">삭제</a>
+                            <a th:href="@{/board/update/{id}(id=${board.id})}">수정</a>
+
+                            <th:block class="subject" th:if="${boardType == 'GENERAL'}">
+                                <a th:href="@{/board/list?boardType=GENERAL}">목록</a>
+                            </th:block>
+                            <th:block class="subject" th:if="${boardType == 'INTERNAL'}">
+                                <a th:href="@{/board/list?boardType=INTERNAL}">목록</a>
+                            </th:block>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+            <div class="reply-con">
+                <div class="reply-write">
+                    <table class="reply-table">
+                        <tbody>
+                            <tr class="tr1">
+                                <td>
+                                    <span><img th:src="@{/images/board/user_icon.png}" alt="user_icon"></span>
+                                </td>
+                                <td>
+                                    <input type="hidden" name="boardId" id="boardId" th:value="${board.id}">
+                                    <div id="editor"></div>
+                                    <input type="hidden" name="content" id="content" required>
+                                </td>
+                            </tr>
+                            <tr class="tr2">
+                                <td colspan="2">
+                                    <input type="button" value="댓글작성" id="replyWriteBtn">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="reply-list">
+                    <table class="list-table">
+                        <tbody id="replyData">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</th:block>
+</body>
+</html>
+

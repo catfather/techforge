@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"-->
+<!--      layout:decorate="~{fragments/layout/baseLayout}"-->
+>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>write</title>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js'></script>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script th:src="@{/js/board/write.js}" defer></script>
+    <script th:src="@{/js/board/calendar.js}" defer></script>
+    <script th:src="@{/js/chat/chat.js}" defer></script>
+
+    <link rel="stylesheet" th:href="@{/css/board/write.css}">
+
+
+
+</head>
+<body>
+<th:block layout:fragment="container">
+    <div class="container">
+
+
+        <div class="write">
+            <div class="connect">
+                <input type="text" name="userId" id="userId" placeholder="접속자명">
+            <form th:action="@{/board/write}" method="post" enctype="multipart/form-data" th:object="${boardDto}">
+
+
+
+                <label th:for = "title">제목</label>
+                <input type="text" name="title" id="title" required>
+
+                <label th:for = "content">내용</label>
+                <div id="editor"></div>
+                <input type="hidden" name="content" id="content" th:field="*{content}">
+
+                <label th:for = "writer">작성자</label>
+                <input type="text" name="writer" id="writer" required>
+
+                <select name="boardType" id="boardType" onchange="toggleDateFields()">
+                    <option value="GENERAL">전체공지</option>
+                    <option value="INTERNAL">사내게시판</option>
+                </select>
+
+                <label th:for="boardFile">첨부파일</label>
+                <input type="file" name="file" id="file">
+
+                <div id="dateFields" style="display: none;">
+                    <label for="startDate">게시 시작일:</label>
+                    <input type="date" id="startDate" name="startDate" th:field="*{startDate}" required>
+
+                    <label for="endDate">게시 종료일:</label>
+                    <input type="date" id="endDate" name="endDate" th:field="*{endDate}" required>
+
+                    <label th:for="addEventRadio">일정 추가하기</label>
+                    <input type="checkbox" name="eventOption" id="addEventCheckbox" value="addEvent" onclick="toggleCalendar()">
+                    <div id="dateCalendar" style="display: none;">
+                        <main>
+
+                            <div id="fill">
+                                <h1 class="title">
+                                    전체 ScheduleCalendar
+                                </h1>
+                                <div class="img">
+                                </div>
+                                <div id='calendar-container'>
+                                    <div id='calendar'></div>
+                                </div>
+                            </div>
+                            <!-- 모달 창 수정 필요하면 , 새롭게 만들면 필요 없음   -->
+                            <div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"   aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">일정을 입력하세요.</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label for="calendar_content" class="col-form-label">일정 내용</label>
+                                                <input type="text" class="form-control" id="calendar_content" name="content">
+                                                <label for="calendar_start_date" class="col-form-label">시작 날짜</label>
+                                                <input type="datetime-local" class="form-control" id="calendar_start_date" name="start">
+                                                <label for="calendar_end_date" class="col-form-label">종료 날짜</label>
+                                                <input type="datetime-local" class="form-control" id="calendar_end_date" name="end">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-warning" id="addBtn">추가</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="sprintSettingModalClose">취소
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </main>
+                    </div>
+                </div>
+
+                <input type="submit" th:value="글쓰기" id="connectBtn">
+            </form>
+            </div>
+
+        </div>
+    </div>
+</th:block>
+</body>
+</html>

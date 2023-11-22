@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout/baseLayout}"
+>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" th:href="@{/css/approval/list.css}">
+  <title>Pagination Example</title>
+  <script th:src="@{/js/approval/PayList.js}" defer></script>
+</head>
+<body>
+<th:block layout:fragment="container">
+  <div class="container">
+
+    <h1 class="title">
+      정산 가능한 프로젝트
+    </h1>
+
+    <div id="result">
+      <table>
+        <thead>
+        <tr>
+          <th>번호</th>
+          <th>제목</th>
+          <th>대상</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="approval : ${approval}">
+          <td th:text="${approval.id}"></td>
+          <td>
+            <a href="#" onclick="viewPost(${approval.id}); return false;">
+              <span th:text="${approval.title}"></span>
+            </a>
+          </td>
+          <td th:text="${approval.type}"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pagination" id="pagination">
+      <button onclick="changePage(-1)">이전</button>
+      <span id="currentPage">1</span>
+      <button onclick="changePage(1)">다음</button>
+    </div>
+  </div>
+  <!-- 모달 창 구현 -->
+  <div id="modal" class="modal" data-approval-id="">
+    <div class="modal-content" style="
+    padding: 50px 300px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+">
+      <span class="close" onclick="closeModal()">×</span>
+      <h2>제목</h2>
+      <h2 id="modalTitle">freelancer test</h2>
+      <span>내용</span> <br>
+      <h3 id="modalContent">&lt;p&gt;freelancer test&lt;/p&gt;</h3>
+      <span>번호</span>
+      <h3 id="modalId">8</h3>
+      <button onclick="pay()">정산하기</button>
+    </div>
+  </div>
+</th:block>
+</body>
+</html>

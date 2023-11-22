@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <script th:src="@{/js/chat/websocket.js}" defer></script>
+    <script th:src="@{/js/chatbot/chatbot.js}" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+<div class="header" th:replace="~{fragments/common/header :: headerFragment}"></div>
+<div class="sidebar" th:replace="~{fragments/common/sidebar :: sidebarFragment}"></div>
+<th:block layout:fragment="container">
+    <!-- 각페이지의 컨텐츠  -->
+</th:block>
+
+</body>
+
+</html>

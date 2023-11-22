@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout/baseLayout}">
+<head>
+    <meta charset="UTF-8">
+    <title>근태관리</title>
+    <link rel="stylesheet" th:href="@{/css/workTime/commute.css}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script th:src="@{/js/workTime/commute.js}" defer="defer"></script>
+</head>
+<th:block layout:fragment="container">
+<body>
+<div class="container">
+    <div class="content">
+        <div class="content-con">
+            <div class="content-header">
+                <h1>근태관리</h1>
+            </div>
+            <div class="content-main">
+                <input type="hidden" id="memberId" th:value="${#authentication.principal.memberEntity.id}">
+                <div class="left">
+                    <button id="workInBtn">
+                        <input type="submit" name="workIn" value="출근하기">
+                    </button>
+                </div>
+                <div class="right">
+                    <button id="workOutBtn">
+                        <input type="submit" name="workOut" value="퇴근하기">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</th:block>
+</html>

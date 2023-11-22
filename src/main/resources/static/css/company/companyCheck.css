@@ -1,0 +1,64 @@
+.company_ok{
+color:#008000;
+display: none;
+}
+.company_already{
+color:#6A82FB;
+display: none;
+}
+.businessNumber_ok{
+color:#008000;
+display: none;
+}
+.businessNumber_already{
+color:#008000;
+display: none;
+}
+.businessNumber_expression{
+color:#6A82FB;
+display: none;
+}
+.member_ok{
+color:#008000;
+display: none;
+}
+.member_already{
+color:#008000;
+display: none;
+}
+.email_expression{
+color:#6A82FB;
+display: none;
+}
+.pw_string{
+color:#6A82FB;
+display: none;
+}
+.pw_length{
+color:#6A82FB;
+display: none;
+}
+.pw_true{
+color:#6A82FB;
+display: none;
+}
+.pw_email{
+color:#6A82FB;
+display: none;
+}
+.password_already{
+color:#ed0909;
+display: none;
+}
+.phone_ok{
+color:#008000;
+display: none;
+}
+.phone_already{
+color:#6A82FB;
+display: none;
+}
+.phone_expression{
+color:#6A82FB;
+display: none;
+}
